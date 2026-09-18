@@ -1,0 +1,73 @@
+@import "tailwindcss";
+
+@theme {
+  --font-display: "Archivo Expanded", "Archivo", sans-serif;
+  --font-body: "IBM Plex Sans", "Segoe UI", sans-serif;
+
+  --color-ink: #1B1815;
+  --color-ink-soft: #2A2521;
+  --color-paper: #F7F3EC;
+  --color-paper-dim: #EFE9DD;
+  --color-clay: #B94E1F;
+  --color-clay-dark: #8F3B16;
+  --color-amber: #E08A3C;
+  --color-stone: #8C8478;
+  --color-stone-light: #C9C1B2;
+  --color-steel: #333B3C;
+  --color-steel-dark: #202626;
+  --color-line: #DDD4C6;
+
+  --breakpoint-xs: 420px;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    background-color: var(--color-paper);
+    color: var(--color-ink);
+    font-family: var(--font-body);
+    -webkit-font-smoothing: antialiased;
+  }
+  h1, h2, h3, h4 {
+    font-family: var(--font-display);
+    letter-spacing: -0.01em;
+  }
+  :focus-visible {
+    outline: 2px solid var(--color-clay);
+    outline-offset: 3px;
+  }
+}
+
+@layer utilities {
+  .chamfer {
+    clip-path: polygon(0 0, calc(100% - 22px) 0, 100% 22px, 100% 100%, 0 100%);
+  }
+  .chamfer-lg {
+    clip-path: polygon(0 0, calc(100% - 40px) 0, 100% 40px, 100% 100%, 0 100%);
+  }
+  .container-wide {
+    max-width: 1280px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .container-wide {
+    padding-left: 3rem;
+    padding-right: 3rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
